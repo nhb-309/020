@@ -12,19 +12,23 @@ ter <- st_read('D:/r/terrasses/shp/ter/terrasses-autorisations.shp')
 
 ter10 <- ter %>% 
     filter(arrondissem == 75010)
+
 ggplot()+
     geom_sf(data=quartier %>% filter(C_AR==10 ) ,
             fill='#526a7d',
             alpha=0.3,
-            col='#365b81',
+            col='#3c556c',
             size=1)+
+    geom_sf(data=voies,col='#3c556c',size=1,linetype="dotted")+
     geom_sf(data=ter10,
-            col='black',
+            aes(col = as.factor(ter10$period)),
             alpha=1,
-            pch = 18,
+            pch = 20,
             size=5)+
-    geom_sf(data=voies,col='#3c556c',size=1)+
     coord_sf(crs = st_crs('+proj=moll'),
              xlim=c(180973.35,183385.46),
              ylim=c(5754300,5756200))+
-    theme_map()
+    theme_map()+
+    scale_color_brewer(palette='Set1')+
+    labs(color="Période d'ouverture")
+
