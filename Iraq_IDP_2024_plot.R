@@ -5,7 +5,7 @@ library(ggplot2)
 library(ggrepel)
 library(readxl)
 
-path='C:/Users/PC/Documents/Wikipedia/Carto/data/population_irak/'
+path=''
 setwd(path)
 list.files(pattern='.shp')
 
